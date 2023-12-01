@@ -1,0 +1,57 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Document Storage API",
+    "description": "API for uploading XML documents to document storage",
+    "license": {
+      "name": "Your License",
+      "url": "URL to your license"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.yourdomain.com/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/upload": {
+      "post": {
+        "summary": "Upload XML Document",
+        "description": "Endpoint to upload XML documents to the document storage",
+        "requestBody": {
+          "description": "XML document to be uploaded",
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful upload"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized - API key is missing or invalid"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  }
+}
